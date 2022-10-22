@@ -1,0 +1,19 @@
+
+{
+   "productosVendidos": [
+    {
+		"Id": 0,
+		"Stock": 10,
+		"IdProducto": 1,
+		"IdVenta": 0    
+	},
+    {
+		"Id": 0,
+		"Stock": 5,
+		"IdProducto": 2,
+		"IdVenta": 0
+    }
+  ]
+
+
+}
