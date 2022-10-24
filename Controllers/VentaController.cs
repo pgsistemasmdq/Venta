@@ -2,22 +2,25 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using WebApplication1.Modelos;
-using WebApplication1.Repository;
+using WebApiCoder.Modelos;
+using WebApiCoder.Repository;
 
-namespace WebApplication1.Controllers
+namespace WebApiCoder.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class VentaController : ControllerBase
     {
         [HttpPost]
-        public void CargarVenta([FromBody] List<ProductoVendido> prodVendidos, string comentarios, int idUsuario)
+        public void CargarVenta([FromBody] VentaProducto vtas)
         {
-            ADO_Venta.CargarVenta(prodVendidos, comentarios, idUsuario);
-
+            ADO_Venta.CargarVenta(vtas);
         }
-
+        [HttpGet("GetVentas")]
+        public List<Venta> Get()
+        {
+            return ADO_Venta.DevolverVenta();
+        }
 
     }
 }

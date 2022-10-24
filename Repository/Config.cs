@@ -1,6 +1,6 @@
-﻿using WebApplication1.Controllers;
+﻿using WebApiCoder.Controllers;
 
-namespace WebApplication1.Repository
+namespace WebApiCoder.Repository
 {
     public static class Connection
     {

@@ -1,0 +1,20 @@
+{
+	"id": 0,
+	"comentarios": "SUPER CHINO",
+	"idUsuario": 1,
+	"productos": [
+		{
+			"id": 0,
+			"stock": 10,
+			"idProducto": 1,
+			"idVenta": 0
+		},
+		{
+			"id": 0,
+			"stock": 50,
+			"idProducto": 2,
+			"idVenta": 0
+		}
+
+	]
+}

@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Controllers
+﻿namespace WebApiCoder.Controllers
 {
     public class ConfigController
     {
