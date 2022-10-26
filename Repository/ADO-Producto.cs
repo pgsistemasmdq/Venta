@@ -112,7 +112,14 @@ namespace WebApiCoder.Repository
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Delete FROM Producto WHERE Id = @idProducto", conn);
+                //Eliminar productos vendidos
+                SqlCommand cmd = new SqlCommand("Delete FROM ProductoVendido WHERE Id = @idProducto", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new SqlParameter("idProducto", SqlDbType.BigInt)).Value = idProducto;
+                cmd.ExecuteNonQuery();
+
+                //Eliminar Producto
+                cmd = new SqlCommand("Delete FROM Producto WHERE Id = @idProducto", conn);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new SqlParameter("idProducto", SqlDbType.BigInt)).Value = idProducto;
                 filas_eliminadas = Convert.ToInt32(cmd.ExecuteNonQuery());

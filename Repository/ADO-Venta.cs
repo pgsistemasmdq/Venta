@@ -23,11 +23,18 @@ namespace WebApiCoder.Repository
                 //INSERT en tabla producto vendido con lista de productos enviados
                 foreach (ProductoVendido producto in vtaProductos.Productos)
                 {
+                    //Agregar Venta
                     cmd = new SqlCommand("INSERT INTO ProductoVendido (Stock,IdProducto,IdVenta)  VALUES   (@Stock,@IdProducto,@IdVenta) ", conn);
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int)).Value = producto.Stock;
                     cmd.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.BigInt)).Value = producto.IdProducto;
                     cmd.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.BigInt)).Value = idVenta;
+                    cmd.ExecuteNonQuery();
+                    //Actualizar Stock en Productos
+                    cmd = new SqlCommand("UPDATE Producto SET Stock = Stock - @Stock WHERE idProducto = @IdProducto", conn);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int)).Value = producto.Stock;
+                    cmd.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.BigInt)).Value = producto.IdProducto;
                     cmd.ExecuteNonQuery();
                 }
                 conn.Close();
